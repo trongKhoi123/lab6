@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BeWebApp.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quản Lý Hàng Hóa</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Id)*@
+            Mã Loại (Tự sinh)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.IdCat)*@
+            Mã Loại 
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.NameCate)*@
+            Tên Loại
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDCate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NameCate)
+    </td>
+    <td>
+        @Html.ActionLink("Xem chi tiết", "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) |
+        @Html.ActionLink("Sửa", "Details", new { id = item.Id } , new { @class = "btn btn-default" }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.Id } , new { @class = "btn btn-default" })
+    </td>
+</tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-default" })
+</p>
